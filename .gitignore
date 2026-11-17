@@ -22,8 +22,12 @@ models/exported/
 runs/
 wandb/
 
-# Secrets
+# Secrets & Local Databases
 .env
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
 kaggle.json
 **/kaggle.json
 

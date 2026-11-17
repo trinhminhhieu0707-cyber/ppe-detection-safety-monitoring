@@ -1,0 +1,33 @@
+# PPE Safety Compliance Rules & Spatial Association Configuration
+# Designed for Robust Temporal Voting and Anatomical Body-Part Alignment
+
+rules:
+  require_hardhat: true
+  require_safety_vest: true
+  require_mask: false          # Configurable by construction site policy
+  require_gloves: false        # Configurable by hazardous work zone policy
+
+spatial_association:
+  # Anatomical body ratio partitions relative to Person bounding box (0.0 = top, 1.0 = bottom)
+  head_region:
+    top: 0.00
+    bottom: 0.30
+    horizontal_expansion: 0.15 # Allow slight protrusion outside worker bbox width
+  torso_region:
+    top: 0.20
+    bottom: 0.75
+    horizontal_expansion: 0.10
+  hands_region:
+    top: 0.45
+    bottom: 0.90
+    horizontal_expansion: 0.20
+
+  # Minimum intersection threshold with target body part
+  min_overlap_ratio: 0.40      # Intersection / Target Item Area
+
+temporal_filtering:
+  history_window_size: 15      # Sliding window of frames (~0.5s at 30 FPS)
+  violation_threshold: 0.60    # Ratio of positive violation frames required to flag violation
+  recovery_threshold: 0.70     # Ratio of compliant frames required to clear violation
+  min_frames_to_persist: 8     # Minimum duration in frames before firing official database event
+

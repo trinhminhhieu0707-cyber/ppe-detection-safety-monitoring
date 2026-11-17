@@ -1,0 +1,11 @@
+# ByteTrack Configuration for Construction Worker Tracking
+# Optimized for handling occlusions, motion blur, and ID consistency
+
+tracker_type: bytetrack       # Tracker type ['bytetrack', 'botsort']
+track_high_thresh: 0.45       # Threshold for first association (high confidence detections)
+track_low_thresh: 0.10        # Threshold for second association (low confidence/occluded detections)
+new_track_thresh: 0.55        # Threshold to initialize a new worker track ID
+track_buffer: 45              # Number of frames to keep a lost track alive (approx 1.5s at 30 FPS)
+match_thresh: 0.75            # IoU matching threshold for track association
+fuse_score: true              # Fuse detection confidence with track motion state
+
